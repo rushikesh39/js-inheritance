@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>
+      Create 2 objects - parent and child. Attach methods to parent and use
+      those methods in child object using parents prototype
+    </h3>
+    <pre>
+        let parent = {
+            fname: "Rushi",
+            lname:"Thange",
+            fullName : function callMe(){
+                console.log(this.fname+'  '+this.lname);
+            }
+          };
+          
+          
+          let child = {
+            __proto__:parent
+          }
+        child.fullName();
+        
+    </pre>
+    <p>
+      The code creates a parent object parent with some properties and a method
+      called fullName, which is then inherited by a child object child using the
+      __proto__ property.
+    </p>
+    <p>
+      When child.fullName() is called, it searches for fullName property in
+      child object. Since child does not have it's own fullName property,
+      JavaScript goes up the prototype chain to search for a fullName property
+      in its prototype object, which is the parent object in this case. It finds
+      the fullName method in the parent object and executes it with this
+      referring to the child object. So, the output of the code will be "Rushi
+      Thange", which is the result of executing console.log(this.fname+'
+      '+this.lname); inside the fullName method.
+    </p>
+    <hr />
+    <h3>Write code to explain prototype chaining</h3>
+    <pre>
+        let GrandParent={
+            fName:'Rushikesh'
+        }
+        let Parent={
+            mName:'Ramdas',
+            __proto__:GrandParent
+        }
+        let Child={
+            lName:'Thange',
+            __proto__:Parent
+        
+        } 
+        console.log(Child.fName+" "+Child.mName+" "+Child.lName)
+        
+    </pre>
+    <p>
+      GrandParent object has a property called fName with a value "Rushikesh".
+      Parent object has a property called mName with a value "Ramdas" and it
+      inherits the fName property from its prototype object GrandParent.
+      Similarly, Child object has a property called lName with a value "Thange"
+      and it inherits the mName and fName properties from its prototype objects
+      Parent and GrandParent.
+    </p>
+    <hr />
+    <h3>
+      Add a method to calculate sum of all elements in Array in array's protype,
+      use that method to calculate sum for multiple arrays
+    </h3>
+    <pre>
+        let calculate = {
+            sum: function(arr) {
+              let result = 0;
+              for (let i = 0; i < arr.length; i++) {
+                result += arr[i];
+              }
+              console.log(result);
+            }
+          }
+          calculate.sum([1,2,3,4]);
+          
+    </pre>
+    <p>
+      The given code defines an object called calculate with a method called
+      sum. The sum method takes an array of numbers as input, and calculates
+      their sum using a for loop. Finally, it logs the sum to the console.
+    </p>
+    <hr />
+    <h3>
+      Write a JavaScript function to retrieve all the names of object's own and
+      inherited properties.
+    </h3>
+    <pre>
+      let obj1={
+        name1:'abc'
+      }
+      let obj2={
+        name2:'pqr',
+        __proto__:obj1,
+        
+        
+      }
+      
+      function retrive(){
+        console.log('Names',obj2.name1+"  "+obj2.name2)
+      }
+      retrive()
+      
+      
+      output:-
+      Names abc  pqr
+    </pre>
+    <p>
+      This code creates two objects obj1 and obj2, with obj2 inheriting from obj1. The retrive() function logs the value of the name1 and name2 properties of obj2 to the console.
+    </p>
+    <hr />
+
+    <script src="./script.js"></script>
+  </body>
+</html>
